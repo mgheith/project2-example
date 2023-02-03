@@ -11,6 +11,10 @@ class Game
         puts "Welcome #{@players.join(' and ')}"
     end
 
+    def build_deck
+        
+    end
+
     def start
     end
 
