@@ -4,8 +4,6 @@ class Card
     attr_reader :number
     attr_reader :shading
 
-
-
     def initialize(shape, color, number, shading)
         @shape = shape
         @color = color
@@ -16,5 +14,6 @@ class Card
     def to_s
         "#{shape}, #{color}, #{number}, #{shading}"
     end
+
 end
 

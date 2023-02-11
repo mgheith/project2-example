@@ -1,10 +1,12 @@
 class Table
     attr_accessor :deal_space
+    attr_accessor :deck
+    attr_accessor :discard_space
+    attr_accessor 
 
-    def initialize(players, deck)
-        @players = players
-        @deck = deck
-        @deal_cards = Array.new(12)
+    def initialize(deck)
+        @deal
+        make_game_table
     end
 
     def to_s
@@ -12,7 +14,6 @@ class Table
             puts n
         end
     end
-
     
 
 end
