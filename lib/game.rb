@@ -1,15 +1,12 @@
 require_relative 'player_creator'
 require_relative 'deck_builder'
 require_relative 'card'
+require_relative 'gameplay_functions'
 
 class Game
 
     def initialize
         @player_creator = PlayerCreator.new
-    end
-
-    def table(players, deck)
-        @table = Table.new(players, deck)
     end
 
     def add_players
@@ -29,21 +26,18 @@ class Game
     # Uses Cards from deck
     def start
         deck = Array.new
-        Deck_Builder.build_deck(deck)
+        DeckBuilder.build_deck_for_set(deck)
         deck.shuffle!
         table = Array.new(12)
-        deal_cards(table, deck)
+        GameplayFunctions.deal_cards(table, deck)
         puts table
+        attempt_set(@players[0], table)
+        GameplayFunctions.deal_cards(table, deck)
     end
 
-    def deal_cards(table, deck)
-        table.map! do |n|
-            unless n
-                n = deck.pop
-            else
-                n = n
-            end
-        end
+    def attempt_set(player, table)
+        puts player.to_s + " claims to have found a set!"
+        GameplayFunctions.choose_cards(table)
     end
 
 
