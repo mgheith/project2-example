@@ -2,6 +2,7 @@ require_relative 'player_creator'
 require_relative 'deck_builder'
 require_relative 'card'
 require_relative 'gameplay_functions'
+require_relative 'table'
 
 class Game
 
@@ -28,11 +29,14 @@ class Game
         deck = Array.new
         DeckBuilder.build_deck_for_set(deck)
         deck.shuffle!
-        table = Array.new(12)
-        GameplayFunctions.deal_cards(table, deck)
-        puts table
-        attempt_set(@players[0], table)
-        GameplayFunctions.deal_cards(table, deck)
+        gameTable = Table.new(deck)
+        gameTable.deal_cards
+        #table = Array.new(12)
+        #GameplayFunctions.deal_cards(table, deck)
+        #puts table
+        gameTable.to_s
+        #attempt_set(@players[0], table)
+        #GameplayFunctions.deal_cards(table, deck)
     end
 
     def attempt_set(player, table)
