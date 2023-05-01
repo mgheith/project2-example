@@ -11,6 +11,19 @@ class Card
         @shading = shading
     end
 
+    def self.shape
+        @shape
+    end
+    def self.color
+        @color
+    end
+    def self.number
+        @number
+    end
+    def self.shading
+        @shading
+    end
+
     def to_s
         "#{shape}, #{color}, #{number}, #{shading}"
     end

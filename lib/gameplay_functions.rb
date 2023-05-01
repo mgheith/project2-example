@@ -49,4 +49,19 @@ class GameplayFunctions
         end
         return set
     end
+
+    def GameplayFunctions.give_hint(table)
+        found_set = false
+        table.deal_space.each_with_index do |x, i|
+            table.deal_space.each_with_index do |y, j|
+                table.deal_space.each_with_index do |z, k|
+                    if([i, j, k].uniq.length <= 1)
+                        determine_set([x, y, z])
+                    end             
+                end
+            end
+        end  
+        
+        found_set ? "There is a set"  :  "There is no set"
+    end
 end

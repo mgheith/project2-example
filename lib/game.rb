@@ -31,12 +31,30 @@ class Game
         deck.shuffle!
         gameTable = Table.new(deck)
         gameTable.deal_cards
-        #table = Array.new(12)
-        #GameplayFunctions.deal_cards(table, deck)
-        #puts table
+        gameplay(gameTable)
+    end
+
+    def gameplay(gameTable)
+        quit = false
         gameTable.to_s
-        #attempt_set(@players[0], table)
-        #GameplayFunctions.deal_cards(table, deck)
+        while(!quit)            
+            puts "Gameplay Functions- \n\nDisplay table: 1\nAttempt set; 2\nHint: 3\nAdd cards: 4\nEnd Game: 5\n\n"
+            puts "What would you like to do?"
+            choice = gets.chomp
+            if(choice == "1")
+                gameTable.to_s
+                puts "\n\n"
+            elsif(choice == "2")
+                attempt_set(player[0], gameTable)
+            elsif(choice == "3")
+                GameplayFunctions.give_hint(gameTable)
+            elsif(choice == "4")
+                #add_cards(gameTable)
+            elsif(choice == "5")
+                quit = true;
+            end
+        end
+        
     end
 
     def attempt_set(player, table)
